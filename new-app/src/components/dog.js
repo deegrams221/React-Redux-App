@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getDog} from '../store/actions';
 
-const Dogs = ({getDog, dog, isFetching}) => {
+const Dogs = ({getDog, image, isFetching}) => {
   useEffect(() => {
     getDog();
   }, [getDog])
@@ -16,7 +16,7 @@ const Dogs = ({getDog, dog, isFetching}) => {
 
   return (
     <>
-      <h2>{dog}</h2>
+      <img src={image} alt="random dog" />
       <button onClick={getDog}>See Another Dog</button>
     </>
   )

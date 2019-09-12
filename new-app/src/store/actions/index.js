@@ -17,14 +17,14 @@ export const getDog = () => {
     axios
       .get(`https://dog.ceo/api/breeds/image/random`)
       .then(res => {
-        // console.log("axios request: ", res.data)
+        console.log("axios request: ", res.data)
         dispatch({type: FETCH_DOG_SUCCESS, payload: res.data});
       })
       .catch(error => {
-        console.log("catch error: ", error.response.message);
+        console.log("catch error: ", error.response);
         dispatch({
           type: FETCH_DOG_FAIL,
-          payload: error.response.message
+          payload: error.response
         });
       });
   };
