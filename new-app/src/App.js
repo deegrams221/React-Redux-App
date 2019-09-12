@@ -2,16 +2,16 @@
 
 import React from 'react';
 
-// import Dogs from components
-import Dogs from './components/dog';
+// import Breweries from components
+import Breweries from './components/brewery';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App-header">
-      <h1>Cute Dog Image Generator</h1>
-      <Dogs />
+      <h1>Breweries Generator</h1>
+      <Breweries />
     </div>
   );
 }

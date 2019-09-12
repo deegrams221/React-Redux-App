@@ -1,29 +1,29 @@
 // Step 7 - Action Creators/Types
 // Step 8 - import Axios and set up dispatch
-//        axios.get(`https://dog.ceo/api/breeds/image/random`)
+//        axios.get(`https://api.openbrewerydb.org/breweries`)
 
 import axios from 'axios';
 
 // action types
-export const FETCH_DOG_START = 'FETCH_DOG_START';
-export const FETCH_DOG_SUCCESS = 'FETCH_DOG_SUCCESS';
-export const FETCH_DOG_FAIL = 'FETCH_DOG_FAIL';
+export const FETCH_BREWERY_START = 'FETCH_BREWERY_START';
+export const FETCH_BREWERY_SUCCESS = 'FETCH_BREWERY_SUCCESS';
+export const FETCH_BREWERY_FAIL = 'FETCH_BREWERY_FAIL';
 
 // action creators
-export const getDog = () => {
+export const getBrewery = () => {
   return dispatch => {
     // dispatch and axios request
-    dispatch({type: FETCH_DOG_START});
+    dispatch({type: FETCH_BREWERY_START});
     axios
-      .get(`https://dog.ceo/api/breeds/image/random`)
+      .get(`https://api.openbrewerydb.org/breweries`)
       .then(res => {
         console.log("axios request: ", res.data)
-        dispatch({type: FETCH_DOG_SUCCESS, payload: res.data});
+        dispatch({type: FETCH_BREWERY_SUCCESS, payload: res.data});
       })
       .catch(error => {
         console.log("catch error: ", error.response);
         dispatch({
-          type: FETCH_DOG_FAIL,
+          type: FETCH_BREWERY_FAIL,
           payload: error.response
         });
       });
