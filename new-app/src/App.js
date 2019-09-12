@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   return (
     <div className="App-header">
-      <h1>Breweries Generator</h1>
+      <h1>Find Breweries - Colorado</h1>
       <Breweries />
     </div>
   );

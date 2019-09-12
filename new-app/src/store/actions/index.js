@@ -15,7 +15,7 @@ export const getBrewery = () => dispatch => {
     // dispatch and axios request
     dispatch({type: FETCH_BREWERY_START});
     axios
-      .get(`https://api.openbrewerydb.org/breweries`)
+      .get(`https://api.openbrewerydb.org/breweries?by_state=colorado`)
       .then(res => {
         console.log("axios request: ", res.data)
         dispatch({type: FETCH_BREWERY_SUCCESS, payload: res.data});
