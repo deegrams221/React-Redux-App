@@ -15,13 +15,13 @@ export const getBrewery = () => {
     // dispatch and axios request
     dispatch({type: FETCH_BREWERY_START});
     axios
-      .get(`https://api.openbrewerydb.org/breweries`)
+      .get(`https://api.openbrewerydb.org/breweries/`)
       .then(res => {
-        console.log("axios request: ", res.data)
+        //console.log("axios request: ", res.data)
         dispatch({type: FETCH_BREWERY_SUCCESS, payload: res.data});
       })
       .catch(error => {
-        console.log("catch error: ", error.response);
+        //console.log("catch error: ", error.response);
         dispatch({
           type: FETCH_BREWERY_FAIL,
           payload: error.response

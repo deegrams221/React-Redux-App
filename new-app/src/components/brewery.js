@@ -5,20 +5,21 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getBrewery} from '../store/actions';
 
-const Breweries = ({getBrewery, name, street, city, state, phone, isFetching}) => {
+// {getBrewery, name, street, city, state, phone, isFetching}
+const Breweries = (props) => {
   useEffect(() => {
     getBrewery();
-  }, [getBrewery])
+  }, [props.getBrewery])
 
-  if(isFetching) {
+  if(props.isFetching) {
     return <h2>Fetching Brewery!</h2>
   }
 
   return (
     <>
-      <h2>Brewery: {name}</h2>
-      <h2>Location: {street}{city}{state}</h2>
-      <h2>Phone Number: {phone}</h2>
+      <h2>{props.name}</h2>
+      <h3>{props.street} <br></br>{props.city}, {props.state}</h3>
+      <h4>{props.phone}</h4>
       <button onClick={getBrewery}>See Another Brewery</button>
     </>
   )
@@ -26,7 +27,7 @@ const Breweries = ({getBrewery, name, street, city, state, phone, isFetching}) =
 
 const mapStateToProps = state => {
   return {
-    insult: state.insults,
+    brewery: state.breweries,
     isFetching: state.isFetching,
     error: state.error
   };
