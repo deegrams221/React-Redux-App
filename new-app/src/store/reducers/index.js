@@ -4,7 +4,13 @@
 import {FETCH_BREWERY_START, FETCH_BREWERY_SUCCESS} from "../actions";
 
 const initialState = {
-  insults: [],
+  breweries: [
+    {
+      id: Math.random(),
+      name: 'Name',
+      berwery_type: 'Type'
+    },
+  ],
   isFetching: false,
   error: ''
 };
@@ -20,7 +26,7 @@ export const reducer = (state = initialState, action) => {
     case FETCH_BREWERY_SUCCESS:
       return {
         ...state,
-        brewery: action.payload,
+        breweries: action.payload,
         isFetching: false,
       }; 
     default:

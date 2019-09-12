@@ -5,29 +5,39 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getBrewery} from '../store/actions';
 
-// {getBrewery, name, street, city, state, phone, isFetching}
-const Breweries = (props) => {
+ 
+const Breweries = ({getBrewery, breweries, isFetching}) => {
   useEffect(() => {
     getBrewery();
-  }, [props.getBrewery])
+  }, [getBrewery])
 
-  if(props.isFetching) {
-    return <h2>Fetching Brewery!</h2>
+  if(isFetching) {
+    return <h2>Fetching Breweries!</h2>
   }
 
   return (
-    <>
-      <h2>{props.name}</h2>
-      <h3>{props.street} <br></br>{props.city}, {props.state}</h3>
-      <h4>{props.phone}</h4>
-      <button onClick={getBrewery}>See Another Brewery</button>
-    </>
-  )
+    <div>
+      <div>
+        {breweries.map((brewery) => {
+          return (
+            <div>
+              <h3>Brewery: {brewery.name}</h3>
+              <p>Type of brewery: {brewery.brewery_type}</p>
+              <p>{brewery.city}, {brewery.state}</p>
+              <p>{brewery.website_url}</p>
+            </div>
+          );
+        })}
+      </div>
+      {/* <button onClick={getBrewery}>Find New Brewery</button> */}
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
+  console.log ('mSTP: ', state);
   return {
-    brewery: state.breweries,
+    breweries: state.breweries,
     isFetching: state.isFetching,
     error: state.error
   };
