@@ -4,7 +4,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getBrewery} from '../store/actions';
-
  
 const Breweries = ({getBrewery, breweries, isFetching}) => {
   useEffect(() => {
@@ -16,20 +15,26 @@ const Breweries = ({getBrewery, breweries, isFetching}) => {
   }
 
   return (
-    <div>
-      <div>
-        {breweries.map((brewery) => {
-          return (
-            <div>
-              <h3>Brewery: {brewery.name}</h3>
-              <p>Type of brewery: {brewery.brewery_type}</p>
-              <p>{brewery.city}, {brewery.state}</p>
-              <p>{brewery.website_url}</p>
+    <div className="brewery-list">
+      {breweries.map((brewery) => {
+        return (
+          <div role="list" class="ui divided relaxed list">
+            <div role="listitem" class="item">
+              <div class="content">
+                <div class="header">Brewery: {brewery.name}</div>
+              </div>
+              <div class="content">
+                <div class="meta">Type of brewery: {brewery.brewery_type}</div>
+                <div class="description">
+                  <p>{brewery.city}, {brewery.state}</p>
+                  <p>{brewery.website_url}</p>
+                  <hr></hr>
+                </div>
+              </div>
             </div>
-          );
-        })}
-      </div>
-      {/* <button onClick={getBrewery}>Find New Brewery</button> */}
+          </div>
+        );
+      })}
     </div>
   );
 };
